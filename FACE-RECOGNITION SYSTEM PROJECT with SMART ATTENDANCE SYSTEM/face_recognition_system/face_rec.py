@@ -32,8 +32,8 @@ def unknown_image_encoded(img):
 
 #Encode Faces to the Attendance Sheet
 def MarkAttendance(name):
-    with open('attendance.csv', 'r+') as f:
-        myDatalist =  f.readlines()
+    with open('attendance.csv', 'r+') as attendance:
+        myDatalist =  attendance.readlines()
         nameList = []
         for line in myDatalist :
             entry = line.split(',')
@@ -42,7 +42,7 @@ def MarkAttendance(name):
         if name not in nameList:
             now = datetime.now()
             Time = now.strftime('%H:%M')
-            f.writelines(f'\n{name}, {Time}')
+            attendance.writelines(f'\n{name}, {Time}')
             statement = str('Welcome to class' + name)
             engine.say(statement)
             engine.runAndWait()
@@ -91,8 +91,8 @@ def classify_face(im):
 
         # Create a label with a name below the face
             cv2.rectangle(img, (left-20, bottom -15), (right+20, bottom+20), (255, 0, 0), cv2.FILLED)
-            font = cv2.FONT_HERSHEY_DUPLEX
-            cv2.putText(img, name, (left -20, bottom + 15), font, 1.0, (255, 255, 255), 1)
+            font = cv2.FONT_HERSHEY_TRIPLEX
+            cv2.putText(img, name, (left -20, bottom + 15), font + 1, 1, (255, 255, 255), 1)
             MarkAttendance(name)
 
     # Display the Resulting Image
