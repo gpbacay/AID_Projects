@@ -98,7 +98,7 @@ def classify_face(im):
     # Display the Resulting Image
     while True:
 
-        cv2.imshow('Video', img)
+        cv2.imshow('Face Recognition AI System', img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             return face_names
 
