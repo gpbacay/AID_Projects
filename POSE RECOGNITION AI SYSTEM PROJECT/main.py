@@ -5,8 +5,7 @@ import datetime
 import imutils
 
 mp_holistic = mp.solutions.holistic
-mp_drawing = mp.solutions.drawing_utils 
-drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
+mp_drawing = mp.solutions.drawing_utils
 
 cap = cv2.VideoCapture('PoseVideos/2.mp4')
 #cap =cv2.VideoCapture(0)
@@ -22,16 +21,16 @@ with mp_holistic.Holistic(
         ret, image =cap.read()
         
         if ret:
-            # Convert the BGR image to RGB and process it with MediaPipe Pose.
+            #Convert the BGR image to RGB and process it with MediaPipe Pose.
             img = imutils.resize(image, width=1200)
             total_frames = total_frames + 1
             results = holistic.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
-            # Print nose coordinates.
+            #Print Nose Coordinates.
             image_hight, image_width, _ = image.shape
             if results.pose_landmarks:
                 print(
-                f'Nose coordinates: ('
+                f'Nose Coordinates: ('
                 f'{results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE].x * image_width}, '
                 f'{results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE].y * image_hight})'
               )
@@ -97,4 +96,4 @@ with mp_holistic.Holistic(
 cap.release()
 cv2.destroyAllWindows()
 
-#python main.py
+#Run key: python main.py
