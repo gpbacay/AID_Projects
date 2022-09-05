@@ -73,7 +73,7 @@ with mp_holistic.Holistic(
                     cx, cy = int(landmark_list.x * w), int(landmark_list.y * h)
                     cv2.circle(img, (cx, cy), 4, (255, 0, 0), cv2.FILLED)
             
-            #FPS
+            #Show Frames Per Second
             fps_end_time = datetime.datetime.now()
             time_diff = fps_end_time - fps_start_time
             if time_diff.seconds == 0:
@@ -85,10 +85,10 @@ with mp_holistic.Holistic(
         
             cv2.putText(annotated_image, str(int(fps)) + fps_text, (20, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 255, 0), 1)
          
-            #show images
+            #Program Name
             cv2.imshow("Pose Recognition AI System", annotated_image)
 
-
+            # Terminate the Program
             if cv2.waitKey(1) & 0xFF ==27:
                 break
         else:
