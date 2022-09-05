@@ -96,4 +96,5 @@ with mp_holistic.Holistic(
 cap.release()
 cv2.destroyAllWindows()
 
+
 #Run key: python main.py
