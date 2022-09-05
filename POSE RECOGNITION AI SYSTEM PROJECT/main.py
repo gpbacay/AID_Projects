@@ -22,7 +22,7 @@ with mp_holistic.Holistic(
         
         if ret:
             #Convert the BGR image to RGB and process it with MediaPipe Pose.
-            img = imutils.resize(image, width=1200)
+            img = imutils.resize(image, width=600)
             total_frames = total_frames + 1
             results = holistic.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
