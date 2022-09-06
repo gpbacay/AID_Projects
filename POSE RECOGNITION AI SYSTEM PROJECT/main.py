@@ -7,7 +7,7 @@ import imutils
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture('PoseVideos/6.mp4')
+cap = cv2.VideoCapture('PoseVideos/1.mp4')
 #cap =cv2.VideoCapture(0)
 
 #Frames Per Second
@@ -66,11 +66,6 @@ with mp_holistic.Holistic(
                     connections=mp_holistic.POSE_CONNECTIONS,
                     landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=4, circle_radius=1),
                     connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1))
-                for id, landmark_list in enumerate(results.pose_landmarks.landmark):
-                    h, w, c = img.shape
-                    print(id, landmark_list)
-                    cx, cy = int(landmark_list.x * w), int(landmark_list.y * h)
-                    cv2.circle(img, (cx, cy), 4, (255, 0, 0), cv2.FILLED)
             
             #Show Frames Per Second
             fps_end_time = datetime.datetime.now()
