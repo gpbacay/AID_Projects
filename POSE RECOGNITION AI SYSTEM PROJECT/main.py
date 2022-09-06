@@ -7,7 +7,7 @@ import imutils
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture('PoseVideos/2.mp4')
+cap = cv2.VideoCapture('PoseVideos/6.mp4')
 #cap =cv2.VideoCapture(0)
 
 #Frames Per Second
@@ -18,10 +18,10 @@ total_frames = 0
 with mp_holistic.Holistic(
     static_image_mode=True, min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
     while True:
-        ret, image =cap.read()
+        success, image =cap.read()
         
-        if ret:
-            #Convert the BGR image to RGB and process it with MediaPipe Pose.
+        if success:
+            #Convert the BGR image to RGB and process it with MediaPipe Pose
             img = imutils.resize(image, width=600)
             total_frames = total_frames + 1
             results = holistic.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
@@ -65,7 +65,7 @@ with mp_holistic.Holistic(
                     landmark_list=results.pose_landmarks, 
                     connections=mp_holistic.POSE_CONNECTIONS,
                     landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=4, circle_radius=1),
-                    connection_drawing_spec=mp_drawing.DrawingSpec(color=(255,255,255), thickness=1, circle_radius=1))
+                    connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1))
                 for id, landmark_list in enumerate(results.pose_landmarks.landmark):
                     h, w, c = img.shape
                     print(id, landmark_list)
@@ -96,5 +96,4 @@ with mp_holistic.Holistic(
 cap.release()
 cv2.destroyAllWindows()
 
-
-#Run key: python main.py
+#Run command: python main.py
