@@ -18,7 +18,7 @@ total_frames = 0
 with mp_holistic.Holistic(
     static_image_mode=True, min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
     while True:
-        success, image =cap.read()
+        success, image = cap.read()
         
         if success:
             #Convert the BGR image to RGB and process it with MediaPipe Pose
