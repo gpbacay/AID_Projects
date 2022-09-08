@@ -7,7 +7,7 @@ import imutils
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture('PoseVideos/1.mp4')
+cap = cv2.VideoCapture('PoseVideos/2.mp4')
 #cap =cv2.VideoCapture(0)
 
 #Frames Per Second

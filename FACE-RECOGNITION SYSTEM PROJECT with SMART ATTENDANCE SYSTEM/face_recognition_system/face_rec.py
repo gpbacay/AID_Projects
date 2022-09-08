@@ -11,16 +11,13 @@ engine = textSpeech.init()
 
 # Encode Faces
 def get_encoded_faces():
-    
     encoded = {}
-
     for dirpath, dnames, fnames in os.walk("./faces"):
         for f in fnames:
             if f.endswith(".jpg") or f.endswith(".png"):
                 face = fr.load_image_file("faces/" + f)
                 encoding = fr.face_encodings(face)[0]
                 encoded[f.split(".")[0]] = encoding
-
     return encoded
 
 def unknown_image_encoded(img):
@@ -33,13 +30,13 @@ def unknown_image_encoded(img):
 #Encode Faces to the Attendance Sheet
 def MarkAttendance(name):
     with open('attendance.csv', 'r+') as attendance:
-        myDatalist =  attendance.readlines()
-        nameList = []
-        for line in myDatalist :
+        MyDatalist =  attendance.readlines()
+        NameList = []
+        for line in MyDatalist :
             entry = line.split(',')
-            nameList.append(entry[0])
+            NameList.append(entry[0])
 
-        if name not in nameList:
+        if name not in NameList:
             now = datetime.now()
             Time = now.strftime('%H:%M')
             attendance.writelines(f'\n{name}, {Time}')
@@ -103,3 +100,7 @@ def classify_face(im):
             return face_names
 
 (classify_face("test/1.jpg"))
+
+
+
+#Run Command: python face_rec.py
