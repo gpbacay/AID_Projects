@@ -7,7 +7,7 @@ import imutils
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture('PoseVideos/2.mp4')
+cap = cv2.VideoCapture('PoseVideos/7.mp4')
 #cap =cv2.VideoCapture(0)
 
 #Frames Per Second
@@ -78,7 +78,7 @@ with mp_holistic.Holistic(
             fps_text = " fps"
         
             cv2.putText(annotated_image, str(int(fps)) + fps_text, (20, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 255, 0), 1)
-         
+            
             #Program Name
             cv2.imshow("Pose Recognition AI System", annotated_image)
 
