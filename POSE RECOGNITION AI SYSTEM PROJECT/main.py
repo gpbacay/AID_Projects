@@ -7,7 +7,7 @@ import imutils
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture('PoseVideos/7.mp4')
+cap = cv2.VideoCapture('PoseVideos/2.mp4')
 #cap =cv2.VideoCapture(0)
 
 #Frames Per Second
@@ -31,7 +31,7 @@ with mp_holistic.Holistic(
             if results.pose_landmarks:
                 print(
                 f'Nose Coordinates: ('
-                f'{results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE].x * image_width}, '
+                f'{results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE].x * image_width},'
                 f'{results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE].y * image_hight})'
               )
 
@@ -42,29 +42,29 @@ with mp_holistic.Holistic(
                 annotated_image, 
                 results.left_hand_landmarks, 
                 mp_holistic.HAND_CONNECTIONS,
-                landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1),
-                connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1))
+                landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,255), thickness=1, circle_radius=1),
+                connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,255), thickness=1, circle_radius=1))
             #RIGHT_HAND
             mp_drawing.draw_landmarks(
                 annotated_image, 
                 results.right_hand_landmarks, 
                 mp_holistic.HAND_CONNECTIONS,
-                landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1),
-                connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1))
+                landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,255), thickness=1, circle_radius=1),
+                connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,255), thickness=1, circle_radius=1))
             #FACE
             mp_drawing.draw_landmarks(
                 image=annotated_image, 
                 landmark_list=results.face_landmarks, 
                 connections=mp_holistic.FACEMESH_TESSELATION,
-                landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1),
-                connection_drawing_spec=mp_drawing.DrawingSpec(color=(0, 255, 0), thickness=1, circle_radius=1))
+                landmark_drawing_spec=mp_drawing.DrawingSpec(color=(255,255,0), thickness=1, circle_radius=1),
+                connection_drawing_spec=mp_drawing.DrawingSpec(color=(255, 255, 0), thickness=1, circle_radius=1))
             #POSE
             if results.pose_landmarks:
                 mp_drawing.draw_landmarks(
                     image=annotated_image, 
                     landmark_list=results.pose_landmarks, 
                     connections=mp_holistic.POSE_CONNECTIONS,
-                    landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=4, circle_radius=1),
+                    landmark_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1),
                     connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1, circle_radius=1))
             
             #Show Frames Per Second
