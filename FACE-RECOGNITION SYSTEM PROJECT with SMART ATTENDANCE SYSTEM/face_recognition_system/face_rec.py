@@ -60,7 +60,7 @@ def classify_face(im):
 
     # Convert the Image Color/Resize the Image
     img = cv2.imread(im, 1)
-    img = fr.load_image_file('test/1.jpg')
+    img = fr.load_image_file('test/3.jpg')
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = resize(img, 0.70)
 
@@ -99,7 +99,7 @@ def classify_face(im):
         if cv2.waitKey(1) & 0xFF == ord('q'):
             return face_names
 
-(classify_face("test/1.jpg"))
+(classify_face('test/3.jpg'))
 
 
 
