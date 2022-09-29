@@ -11,17 +11,20 @@ engine = textSpeech.init()
 
 # Encode Faces
 def get_encoded_faces():
+    
     encoded = {}
+    
     for dirpath, dnames, fnames in os.walk("./faces"):
         for f in fnames:
             if f.endswith(".jpg") or f.endswith(".png"):
                 face = fr.load_image_file("faces/" + f)
                 encoding = fr.face_encodings(face)[0]
                 encoded[f.split(".")[0]] = encoding
+                
     return encoded
 
 def unknown_image_encoded(img):
-  
+
     face = fr.load_image_file("faces/" + img)
     encoding = fr.face_encodings(face)[0]
 
@@ -60,7 +63,7 @@ def classify_face(im):
 
     # Convert the Image Color/Resize the Image
     img = cv2.imread(im, 1)
-    img = fr.load_image_file('test/3.jpg')
+    img = fr.load_image_file('test/1.jpg')
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = resize(img, 0.70)
 
@@ -99,7 +102,7 @@ def classify_face(im):
         if cv2.waitKey(1) & 0xFF == ord('q'):
             return face_names
 
-(classify_face('test/3.jpg'))
+(classify_face("test/1.jpg"))
 
 
 
