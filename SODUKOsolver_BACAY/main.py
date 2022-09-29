@@ -317,14 +317,14 @@ def main():
                     i, j = board.selected
                     if board.cubes[i][j].temp != 0:
                         if board.place(board.cubes[i][j].temp):
-                            print("Success")
+                            print("CORRECT!")
                         else:
-                            print("Wrong")
+                            print("INCORRECT!")
                             strikes += 1
                         key = None
 
                         if board.is_finished():
-                            print("Game over")
+                            print("GAME OVER!")
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
