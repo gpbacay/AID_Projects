@@ -9,8 +9,8 @@ from datetime import  datetime
 # Encode Faces
 def get_encoded_faces():
     """
-    Scans through the faces folder and encodes all
-    the faces with their names
+    Scans through the faces folder 
+    and encodes all the faces with their names
 
     :return: dict of (name, image encoded)
     """
@@ -55,8 +55,9 @@ def MarkAttendance(name):
 # Classify Faces
 def classify_face(im):
     """
-    Scans/Locates all of the faces in a given test image 
-    and labels them if they are known faces
+    Scans/Locates all of the faces in a given test image within test folder 
+    and labels them with their name if they are known faces
+    while, on the other hand, unknown faces are labeled as unknown
 
     :param im: str of file path
     :return: list of face names
@@ -114,7 +115,5 @@ def classify_face(im):
             return face_names
 
 (classify_face("test/1.jpg"))
-
-
 
 #Run Command: python main.py
