@@ -1,14 +1,19 @@
 # Import Libraries
-import face_recognition as fr
 import os
 import cv2
-import face_recognition
 import numpy as np
+import face_recognition
+import face_recognition as fr
 from datetime import  datetime
 
 # Encode Faces
 def get_encoded_faces():
-    
+    """
+    Scans through the faces folder and encodes all
+    the faces with their names
+
+    :return: dict of (name, image encoded)
+    """
     encoded = {}
     
     for dirpath, dnames, fnames in os.walk("./faces"):
@@ -21,7 +26,9 @@ def get_encoded_faces():
     return encoded
 
 def unknown_image_encoded(img):
-
+    """
+    Encode an unknown face given the file name as known face
+    """
     face = fr.load_image_file("faces/" + img)
     encoding = fr.face_encodings(face)[0]
 
@@ -29,6 +36,10 @@ def unknown_image_encoded(img):
 
 #Encode Faces to the Attendance Sheet
 def MarkAttendance(name):
+    """
+    Encode the name of the scanned faces into the attendance sheet
+    and the time it was encoded
+    """
     with open('attendance.csv', 'r+') as attendance:
         MyDatalist =  attendance.readlines()
         NameList = []
@@ -43,7 +54,13 @@ def MarkAttendance(name):
             
 # Classify Faces
 def classify_face(im):
+    """
+    Scans/Locates all of the faces in a given test image 
+    and labels them if they are known faces
 
+    :param im: str of file path
+    :return: list of face names
+    """
     faces = get_encoded_faces()
     faces_encoded = list(faces.values())
     known_face_names = list(faces.keys())
