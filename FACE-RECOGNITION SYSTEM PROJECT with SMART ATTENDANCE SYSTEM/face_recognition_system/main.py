@@ -71,13 +71,13 @@ def classify_face(im):
         width = int(img.shape[1]*size)
         height = int(img.shape[0] * size)
         dimension = (width, height)
-        return cv2.resize(img, dimension, interpolation= cv2.INTER_AREA)
+        return cv2.resize(img, dimension, interpolation = cv2.INTER_AREA)
 
     # Convert the Image Color/Resize the Image
     img = cv2.imread(im, 1)
     img = fr.load_image_file('test/1.jpg')
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    img = resize(img, 0.70)
+    img = resize(img, 0.50)
 
     # Find Face Location
     face_locations = face_recognition.face_locations(img)
