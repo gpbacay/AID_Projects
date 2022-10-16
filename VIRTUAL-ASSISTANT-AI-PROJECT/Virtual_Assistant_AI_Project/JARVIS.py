@@ -6,13 +6,11 @@ import datetime
 import wikipedia
 import pyjokes
 
-#Declare Variables
+
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
-
-#Voice Activation
-engine.setProperty('voice', voices[2].id)
+engine.setProperty('voice', voices[0].id)
 
 
 def talk(text):
@@ -63,4 +61,4 @@ def run_jarvis():
 while True:
     run_jarvis()
 
-
+#Run Command: python Jarvis.py

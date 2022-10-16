@@ -63,4 +63,4 @@ def run_khryzen():
 while True:
     run_khryzen()
 
-
+#Run Command: python Khryzen.py
