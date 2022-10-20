@@ -183,7 +183,7 @@ def run_jarvis():
                     "not really",
                     "no I don't",
                     "no thanks",
-                    "no thank you"
+                    "no thank you",
                     "that's a no",
                     "this would suffice",
                     "it would suffice",
