@@ -38,24 +38,6 @@ class Image_Face_Recognition_System():
         """
         
         
-        #Encode Faces to the Attendance Sheet
-        #Run Command: python facerec.py
-        def MarkAttendance(name):
-            """
-            Encode the name of the scanned faces into the attendance sheet
-            and the time it was encoded
-            """
-            with open('attendance.csv', 'r+') as attendance:
-                MyDatalist =  attendance.readlines()
-                NameList = []
-                for line in MyDatalist :
-                    entry = line.split(',')
-                    NameList.append(entry[0])
-                if name not in NameList:
-                    now = datetime.now()
-                    Time = now.strftime('%H:%M')
-                    attendance.writelines(f'\n{name}, {Time}')
-        
         # Encode Faces
         #Run Command: python facerec.py
         def get_encoded_faces():
@@ -92,6 +74,28 @@ class Image_Face_Recognition_System():
         #Capture video from webcam: 
         cap = cv2.VideoCapture(0)
         while True:
+            #Encode Faces to the Attendance Sheet
+            #Run Command: python facerec.py
+            def MarkAttendance(name):
+                """
+                Encode the name of the scanned faces into the attendance sheet
+                and the time it was encoded
+                """
+                with open('attendance.csv', 'r+') as attendance:
+                    now = datetime.now()
+                    Time = now.strftime('%H:%M')
+                    MyDatalist =  attendance.readlines()
+                    NameList = []
+                    for line in MyDatalist :
+                        entry = line.split(',')
+                        NameList.append(entry[0])
+                    if name not in NameList:
+                        if Time not in NameList:
+                            lines = f'\n{name}, {Time}'
+                            attendance = attendance.writelines(lines)
+                            print(NameList)
+            
+            
             _, frame = cap.read()
             
             # Resize Image
@@ -138,7 +142,5 @@ class Image_Face_Recognition_System():
             if key == 27:
                 cv2.destroyAllWindows()
                 return face_names
-            else:
-                continue
     Classify_Faces()
 #Run Command: python facerec.py
