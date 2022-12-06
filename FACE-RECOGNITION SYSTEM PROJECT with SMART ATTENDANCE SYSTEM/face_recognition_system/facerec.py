@@ -90,10 +90,8 @@ class Image_Face_Recognition_System():
                         entry = line.split(',')
                         NameList.append(entry[0])
                     if name not in NameList:
-                        if Time not in NameList:
-                            lines = f'\n{name}, {Time}'
-                            attendance = attendance.writelines(lines)
-                            print(NameList)
+                        lines = f'\n{name}, {Time}'
+                        attendance = attendance.writelines(lines)
             
             
             _, frame = cap.read()
