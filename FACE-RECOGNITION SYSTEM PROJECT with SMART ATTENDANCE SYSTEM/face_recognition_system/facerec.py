@@ -6,9 +6,12 @@ import face_recognition
 import face_recognition as fr
 from datetime import  datetime
 import time
+import pyttsx3
 
+engine = pyttsx3.init()
 
 class Image_Face_Recognition_System():
+    
     #Clear the CSV file
     #Run Command: python facerec.py
     def ClearCSV():
@@ -74,6 +77,11 @@ class Image_Face_Recognition_System():
         #Capture video from webcam: 
         cap = cv2.VideoCapture(0)
         while True:
+            
+            def talk(text):
+                engine.say(text)
+                engine.runAndWait()
+            
             #Encode Faces to the Attendance Sheet
             #Run Command: python facerec.py
             def MarkAttendance(name):
@@ -92,6 +100,9 @@ class Image_Face_Recognition_System():
                     if name not in NameList:
                         lines = f'\n{name}, {Time}'
                         attendance = attendance.writelines(lines)
+                        statement = str("Welcome to class " + name)
+                        talk(statement)
+                        
             
             
             _, frame = cap.read()
