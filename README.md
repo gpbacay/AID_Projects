@@ -7,7 +7,7 @@
 
 - 🔭 I’m currently working on **USeP Google Developer Students Clubs' AI Division Group Projects**
 
-- 🌱 I’m currently learning **Artificial Intelligence, machine learning, etc.**
+- 🌱 I’m currently learning **Artificial Intelligence, Machine Learning, Computer Vision and Neural Networks**
 
 - 📫 How to reach me **giannebacay2004@gmail.com**
 
